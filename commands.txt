@@ -1,0 +1,11 @@
+>python manage.py runserver- to run the server
+>python manage.py startapp nameOfApp- to create new App.
+>python manage.py migrate - this will commit any depending changes to the database.
+>python manage.py createsuperuser- to create a super user(admin)
+
+>python manage.py makemigrations - this is writing pending transactions to the database
+>python manage.py migrate- this will commit
+super user details: 
+    username: rguntha
+    mail: guntha@gmail.com
+    password: rahulg27
