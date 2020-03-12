@@ -5,8 +5,9 @@
     <h1>this is the body</h1>
     <p>this is the main content of the body.</p>
 
-    {% for question in questions %}
-        {% include 'personal/snippets/body_snippet.html' with value=question%}
+    {% for account in accounts %}
+        <!-- {% include 'personal/snippets/body_snippet.html' with value=account%} -->
+        <p>{{account}}</p>
     {% endfor %}
 
 
