@@ -3,16 +3,25 @@
     <title>
         BlogApp
     </title>
-    <div style="border: 2px solid black">
-        <h1>this is header</h1>
-    </div>
+    {% if request.user.is_authenticated %}
+        <p>
+            <a href="{% url 'home' %}">Home</a>|
+            <a href="{% url 'logout' %}">Logout</a>
+        </p>
+        <p>Hello {{ request.user.username }} </p>
+    {% else %}
+        <p>
+            <a href="{% url 'home' %}">Home</a> |
+            <a href="{% url 'register' %}">Register</a> |
+            <a href="{% url 'login' %}">Login</a>
+        </p>
+    {% endif %}
 </head>
 <body>
     {% block content %}
     {% endblock content %}
 </body>
 <footer>
-    <div style="border: 2px solid black">
-        <h1>this is footer</h1>
-    </div>
+    <hr>
+    <p>Django Blog App 2020</p>
 </footer>

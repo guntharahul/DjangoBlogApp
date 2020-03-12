@@ -6,6 +6,6 @@
 >python manage.py makemigrations - this is writing pending transactions to the database
 >python manage.py migrate- this will commit
 super user details: 
-    username: rguntha
-    mail: guntha@gmail.com
-    password: rahulg27
+    username: rahul
+    mail: guntha.rahul9@gmail.com
+    password: anonymous1997
