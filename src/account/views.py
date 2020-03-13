@@ -55,12 +55,17 @@ def account_view(request):
     if request.POST:
         form=AccountUpdateForm(request.POST,instance=request.user)
         if form.is_valid():
+            form.initial={
+                "email":request.POST['email'],
+                "username":request.POST['username'],          #showing the feild immediately after updating the form
+            }
             form.save()
+            context['success_message']="Updated"
     else:
         form=AccountUpdateForm(
             initial={
                 "email":request.user.email,
-                "username":request.user.username
+                "username":request.user.username,
             }
         )
     context['account_form']=form
