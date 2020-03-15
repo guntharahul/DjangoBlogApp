@@ -3,6 +3,8 @@ from blog.models import BlogPost
 from blog.forms import CreateBlogPostForm
 from account.models import Account
 from blog.forms import UpdateBlogPostForm
+from django.db.models import Q
+from django.http import HttpResponse
 
 
 def create_blog_view(request):
@@ -35,6 +37,10 @@ def edit_blog_view(request,slug):
         return redirect('must_authenticate')
 
     blog_post=get_object_or_404(BlogPost,slug=slug)
+
+    if blog_post.author !=user:
+        return HttpResponse("Your did not publish the post to edit. ")
+
     if request.POST:
         form=UpdateBlogPostForm(request.POST or None, request.FILES or None, instance=blog_post)
         if form.is_valid():
@@ -52,3 +58,16 @@ def edit_blog_view(request,slug):
 
     context['form']=form
     return render(request,'blog/edit_blog.html',context)
+
+def get_blog_queryset(query=None):
+    queryset=[]
+    queries=query.split(" ")
+    for q in queries:
+        posts=BlogPost.objects.filter(
+            Q(title__icontains=q) |
+            Q(body__icontains=q)
+        ).distinct()
+        for post in posts:
+            queryset.append(post)
+        
+    return list(set(queryset))      #set makes sure we get all unique items form the list list
