@@ -22,7 +22,8 @@ from account.views import (
     logout_view,
     login_view,
     account_view,
-    must_authenticate_view
+    must_authenticate_view,
+    about_view
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -35,6 +36,7 @@ urlpatterns = [
     path('logout/', logout_view, name="logout"),
     path('login/', login_view, name="login"),
     path('account/', account_view, name="account"),
+    path('about/',about_view,name="about"),
     path('must_authenticate/',must_authenticate_view,name="must_authenticate"),
 
     # links for password reset
