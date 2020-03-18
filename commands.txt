@@ -9,3 +9,8 @@ super user details:
     username: rahul
     mail: guntha.rahul9@gmail.com
     password: anonymous1997
+
+
+
+
+add ip address in settings.py and nginx server.
