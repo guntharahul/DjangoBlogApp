@@ -14,3 +14,19 @@ super user details:
 
 
 add ip address in settings.py and nginx server.
+
+
+
+
+sudo ln -s /etc/nginx/sites-availabe/djangoproject  /etc/nginx/sites-enabled  -----> to enable the code written in nginx setup file.
+sudo nginx -t ----->check nginx setup.
+
+if there is something wrong just restart the nginx server.
+
+
+do this when you start a VM if server is not running
+
+service gunicorn restart
+sudo systemctl restart nginx
+sudo systemctl status gunicorn.service
+
